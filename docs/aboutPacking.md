@@ -4,3 +4,5 @@
 - [Official MS docs](https://docs.microsoft.com/en-us/nuget/)
 - [Dotnet Packaging](https://docs.microsoft.com/en-us/nuget/create-packages/creating-a-package-dotnet-cli)
 - [Packaging best practices](https://docs.microsoft.com/en-us/nuget/create-packages/package-authoring-best-practices)
+- [Debugging](https://docs.microsoft.com/en-us/nuget/create-packages/symbol-packages-snupkg)
+- [Licensing](https://docs.microsoft.com/en-us/nuget/reference/nuspec#license)

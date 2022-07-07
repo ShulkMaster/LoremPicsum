@@ -1,9 +1,37 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
+        <OutputType>Library</OutputType>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
+
+    <PropertyGroup>
+        <PackageId>Lorem.Picsum.Wrapper</PackageId>
+        <PackageIcon>icon.png</PackageIcon>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/ShulkMaster/LoremPicsum</PackageProjectUrl>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+        <PackageTags>Wrapper;Picsum;Lorem;Placeholder</PackageTags>
+        <RepositoryUrl>https://github.com/ShulkMaster/LoremPicsum</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <Title>Lorem.Picsum.Wrapper</Title>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <Authors>ShulkMaster</Authors>
+        <Description>
+            .NET wrapper over the Lorem Picsum API with aditional utilities
+            over Bitmaps and picture files
+        </Description>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="..\icon.png" Pack="true" PackagePath="\"/>
+        <None Include="..\README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
 
 </Project>
