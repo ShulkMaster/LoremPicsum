@@ -15,17 +15,19 @@ variables:
   patch: 0
   prefix: $(major).$(minor).$(patch)
   Conf: 'Release'
-  path: Picsum\Picsum.csproj
+  path: Picsum/Picsum.csproj
   buildRun: $[counter(variables['prefix'], 0)]
 
 steps:
  - task: DotNetCoreCLI@2
+   displayName: 'Restore'
    inputs:
      command: 'restore'
      projects: $(path)
      feedsToUse: 'select'
      vstsFeed: 'cc23d1bb-b189-4c5a-8025-9d981f84c158'
  - task: DotNetCoreCLI@2
+   displayName: 'Build'
    inputs:
       command: 'build'
       arguments: '--no-restore -c $(Conf) -p:VersionPrefix=$(prefix) -p:AssemblyVersion=$(prefix)'
