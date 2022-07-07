@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: 'windows-latest'
 
 variables:
   major: 0
@@ -23,7 +23,7 @@ steps:
    displayName: 'Restore'
    inputs:
      command: 'restore'
-     projects: $(path)
+     projects: Picsum/Picsum.csproj
      feedsToUse: 'select'
      vstsFeed: 'cc23d1bb-b189-4c5a-8025-9d981f84c158'
  - task: DotNetCoreCLI@2
