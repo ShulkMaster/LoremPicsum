@@ -1,0 +1,43 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  major: 0
+  minor: 1
+  patch: 0
+  prefix: $(major).$(minor).$(patch)
+  Conf: 'Release'
+  path: Picsum\Picsum.csproj
+  buildRun: $[counter(variables['prefix'], 0)]
+
+steps:
+ - task: DotNetCoreCLI@2
+   inputs:
+     command: 'restore'
+     projects: $(path)
+     feedsToUse: 'select'
+     vstsFeed: 'cc23d1bb-b189-4c5a-8025-9d981f84c158'
+ - task: DotNetCoreCLI@2
+   inputs:
+      command: 'build'
+      arguments: '--no-restore -c $(Conf) -p:VersionPrefix=$(prefix) -p:AssemblyVersion=$(prefix)'
+      projects: $(path)
+
+ - task: CmdLine@2
+   inputs:
+    script: 'mv Picsum/bin/$(Conf)/*.nupkg $(Build.ArtifactStagingDirectory)'
+    failOnStderr: true
+
+ - task: PublishBuildArtifacts@1
+   inputs:
+      PathtoPublish: $(Build.ArtifactStagingDirectory)
+      ArtifactName: 'artifacs'
+      publishLocation: 'Container'
