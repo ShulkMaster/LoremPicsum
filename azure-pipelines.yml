@@ -15,8 +15,7 @@ variables:
   patch: 0
   prefix: $(major).$(minor).$(patch)
   Conf: 'Release'
-  path: Picsum/Picsum.csproj
-  buildRun: $[counter(variables['prefix'], 0)]
+  projectPath: Picsum/Picsum.csproj
 
 steps:
  - task: DotNetCoreCLI@2
@@ -31,14 +30,16 @@ steps:
    inputs:
       command: 'build'
       arguments: '--no-restore -c $(Conf) -p:VersionPrefix=$(prefix) -p:AssemblyVersion=$(prefix)'
-      projects: $(path)
+      projects: Picsum/Picsum.csproj
 
- - task: CmdLine@2
+ - task: PowerShell@2
+   displayName: 'Moving files'
    inputs:
-    script: 'mv Picsum/bin/$(Conf)/*.nupkg $(Build.ArtifactStagingDirectory)'
+    script: 'Move-Item -Path Picsum/bin/$(Conf)/*.nupkg -Destination $(Build.ArtifactStagingDirectory)'
     failOnStderr: true
 
  - task: PublishBuildArtifacts@1
+ 
    inputs:
       PathtoPublish: $(Build.ArtifactStagingDirectory)
       ArtifactName: 'artifacs'
