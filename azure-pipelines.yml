@@ -35,8 +35,9 @@ steps:
  - task: PowerShell@2
    displayName: 'Moving files'
    inputs:
-    script: 'Move-Item -Path Picsum/bin/$(Conf)/*.nupkg -Destination $(Build.ArtifactStagingDirectory)'
-    failOnStderr: true
+     targetType: 'inline'
+     script: 'Move-Item -Path Picsum/bin/$(Conf)/*.nupkg -Destination $(Build.ArtifactStagingDirectory)'
+     failOnStderr: true
 
  - task: PublishBuildArtifacts@1
  
