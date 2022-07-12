@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using Picsum.Request;
 
 namespace Picsum;
 
@@ -31,5 +32,10 @@ public static class LoremPic
         }
 
         return sb.ToString();
+    }
+
+    public static Imag RequestImage(LoremBitmapRequest request)
+    {
+        
     }
 }

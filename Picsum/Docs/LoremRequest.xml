@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <class>
+        <summary>
+            Hold the information about extra properties in the picture requested such as size and filters
+        </summary>
+    </class>
+    <member name="Id">
+        <summary>
+            Id of the image to fetch from the API, starts at 1
+        </summary>
+        <remarks>Ids start at 1</remarks>
+    </member>
+    <member name="Seed">
+        <summary>
+            Computed string value used to return the same image
+            from the original string value
+        </summary>
+    </member>
+    <member name="GrayScale">
+        <summary>
+            Indicates if the Grayscale filter is enable
+        </summary>
+        <remarks>black and white image</remarks>
+    </member>
+    <member name="Width">
+        <summary>
+            Whit in pixels of the requested image
+        </summary>
+    </member>
+    <member name="Height">
+        <summary>
+            Indicates if the Grayscale filter is enable
+        </summary>
+        <remarks>If null the value of the <see cref="P:Picsum.LoremRequest.Width"/> will be used instead</remarks>
+    </member>
+</docs>

@@ -9,6 +9,7 @@
     </PropertyGroup>
 
     <PropertyGroup>
+        <LangVersion>10</LangVersion>
         <PackageId>Lorem.Picsum.Wrapper</PackageId>
         <PackageIcon>icon.png</PackageIcon>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
