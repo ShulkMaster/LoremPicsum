@@ -1,7 +1,7 @@
 ﻿namespace Picsum;
 
 ///<include file='Docs/LoremRequest.xml' path='docs/class/*'/>
-public class LoremRequest
+public sealed class LoremRequest
 {
     ///<include file='Docs/LoremRequest.xml' path='docs/member[@name="Id"]'/>
     public int? Id { get; set; }
@@ -16,5 +16,9 @@ public class LoremRequest
     public int Width { get; set; } = 256;
 
     ///<include file='Docs/LoremRequest.xml' path='docs/member[@name="Height"]'/>
-    public int? Height { get; set; }
+    public int? Height { get; set; } = null;
+    
+    public Blur Blur { get; set; } = Blur.None;
+
+    public ImgFormat Format { get; set; } = ImgFormat.Jpg;
 }
