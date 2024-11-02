@@ -1,9 +1,9 @@
 ﻿using ShulkMaster.Picsum.Option;
 
-namespace ShulkMaster.Picsum;
+namespace ShulkMaster.Picsum.Client;
 
 ///<include file='Docs/LoremRequest.xml' path='docs/class/*'/>
-public sealed class LoremRequest
+public sealed class PicsumConfig
 {
     ///<include file='Docs/LoremRequest.xml' path='docs/member[@name="Id"]'/>
     public int? Id { get; set; }
