@@ -1,4 +1,6 @@
-﻿namespace Picsum;
+﻿using ShulkMaster.Picsum.Option;
+
+namespace ShulkMaster.Picsum;
 
 ///<include file='Docs/LoremRequest.xml' path='docs/class/*'/>
 public sealed class LoremRequest
