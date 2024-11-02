@@ -1,4 +1,4 @@
-﻿namespace Picsum;
+﻿namespace Picsum.Option;
 
 public enum ImgFormat
 {
