@@ -6,10 +6,11 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <RootNamespace>ShulkMaster.Picsum</RootNamespace>
     </PropertyGroup>
 
     <PropertyGroup>
-        <LangVersion>10</LangVersion>
+        <LangVersion>12</LangVersion>
         <PackageId>Lorem.Picsum.Wrapper</PackageId>
         <PackageIcon>icon.png</PackageIcon>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
