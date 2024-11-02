@@ -1,19 +1,21 @@
 ﻿using System.Text;
-using Picsum.Structs;
+using System.Web;
+using ShulkMaster.Picsum.Option;
+using ShulkMaster.Picsum.Url;
 
-namespace Picsum;
+namespace ShulkMaster.Picsum;
 
 /// <summary>
 /// This is a wrapper class over the Lorem Picsum API
 /// </summary>
-public class LoremPic
+public class LoremPicsum
 {
   private const string ApiUrl = "https://picsum.photos/";
-  private readonly string _api;
+  private readonly Uri _api;
 
-  public LoremPic(string baseUrl = ApiUrl)
+  public LoremPicsum(string baseUrl = ApiUrl)
   {
-    _api = baseUrl;
+    _api = new Uri(baseUrl);
   }
 
   private static void SetIfIdOrSeed(LoremRequest request, StringBuilder sb)
@@ -28,7 +30,8 @@ public class LoremPic
     else if (!string.IsNullOrWhiteSpace(request.Seed))
     {
       sb.Append("seed/");
-      sb.Append(request.Seed);
+      var encoded = HttpUtility.UrlEncode(request.Seed);
+      sb.Append(encoded);
       sb.Append('/');
     }
     // left to the server random img implementation
