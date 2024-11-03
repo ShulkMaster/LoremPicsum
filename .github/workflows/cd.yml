@@ -12,6 +12,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Print version
+        id: version-print
+        run: |
+          new_version=$(cat ./nupkg/*.nupkg | grep -oP '(?<=<version>)[^<]+')
+          echo "new_version=$new_version"
+          echo "new_version=$new_version" >> $GITHUB_ENV
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
