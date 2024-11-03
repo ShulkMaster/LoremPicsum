@@ -12,13 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Print version
-        id: version-print
-        run: |
-          new_version=$(cat ./nupkg/*.nupkg | grep -oP '(?<=<version>)[^<]+')
-          echo "new_version=$new_version"
-          echo "new_version=$new_version" >> $GITHUB_ENV
-
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
@@ -40,10 +33,10 @@ jobs:
           echo "new_version=$new_version"
           echo "new_version=$new_version" >> $GITHUB_ENV
 
-          PACKAGE_EXISTS=$(dotnet nuget list source -s "https://api.nuget.org/v3/index.json" | grep -c $new_version)
-          echo "Package exists: $PACKAGE_EXISTS"
+          #PACKAGE_EXISTS=$(dotnet nuget list source -s "https://api.nuget.org/v3/index.json" | grep -c $new_version)
+          #echo "Package exists: $PACKAGE_EXISTS"
           
-          echo "::set-output name=package-exists::$PACKAGE_EXISTS"
+          #echo "::set-output name=package-exists::$PACKAGE_EXISTS"
 
       - name: Publish NuGet package
         if: steps.version-check.outputs.package-exists == '0'
