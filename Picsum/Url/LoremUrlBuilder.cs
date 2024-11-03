@@ -12,13 +12,13 @@ using Self = LoremUrlBuilder;
 /// </summary>
 public class LoremUrlBuilder
 {
-  private const string ApiUrl = "https://picsum.photos/";
+  public const string ApiUrl = "https://picsum.photos/";
   private readonly PicsumConfig _config;
   private readonly Uri _api;
 
-  public LoremUrlBuilder(PicsumConfig config, string baseUrl = ApiUrl)
+  public LoremUrlBuilder(string baseUrl = ApiUrl)
   {
-    _config = config;
+    _config = new PicsumConfig();
     _api = new Uri(baseUrl);
   }
 
@@ -45,8 +45,8 @@ public class LoremUrlBuilder
   {
     var w = request.Width;
     sb.Append(w);
-    sb.Append('/');
     if (!request.Height.HasValue) return;
+    sb.Append('/');
     sb.Append(request.Height.Value);
     sb.Append('/');
   }
