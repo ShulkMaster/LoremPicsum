@@ -1,0 +1,48 @@
+﻿name: CD
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --no-restore -c Release
+
+      - name: Pack
+        run: dotnet pack --no-build -c Release -o ./nupkg
+
+      - name: Check for version change
+        id: version-check
+        run: |
+          new_version=$(cat ./nupkg/*.nupkg | grep -oP '(?<=<version>)[^<]+')
+          echo "new_version=$new_version"
+          echo "new_version=$new_version" >> $GITHUB_ENV
+
+          PACKAGE_EXISTS=$(dotnet nuget list source -s "https://api.nuget.org/v3/index.json" | grep -c $new_version)
+          echo "Package exists: $PACKAGE_EXISTS"
+          
+          echo "::set-output name=package-exists::$PACKAGE_EXISTS"
+
+      - name: Publish NuGet package
+        if: steps.version-check.outputs.package-exists == '0'
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        run: dotnet nuget push ./nupkg/*.nupkg --api-key $NUGET_API_KEY --source https://api.nuget.org/v3/index.json
+      - name: Version already exists
+        if: steps.version-check.outputs.package-exists != '0'
+        run: echo "The NuGet package version ${{ env.new_version }} already exists. No new package will be published."        

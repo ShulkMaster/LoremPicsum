@@ -15,23 +15,23 @@
 
     <PropertyGroup>
         <LangVersion>12</LangVersion>
-        <PackageId>Lorem.Picsum.Wrapper</PackageId>
+        <PackageId>ShulkMaster.Picsum</PackageId>
         <PackageIcon>icon.png</PackageIcon>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <PackageProjectUrl>https://github.com/ShulkMaster/LoremPicsum</PackageProjectUrl>
+        <PackageProjectUrl>https://github.com/ShulkMaster/Picsum</PackageProjectUrl>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
         <PackageTags>Wrapper;Picsum;Lorem;Placeholder</PackageTags>
-        <RepositoryUrl>https://github.com/ShulkMaster/LoremPicsum</RepositoryUrl>
+        <RepositoryUrl>https://github.com/ShulkMaster/Picsum</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
-        <Title>Lorem.Picsum.Wrapper</Title>
+        <Title>ShulkMaster.Picsum</Title>
     </PropertyGroup>
 
     <PropertyGroup>
         <Authors>ShulkMaster</Authors>
         <Description>
-            .NET wrapper over the Lorem Picsum API with aditional utilities
-            over Bitmaps and picture files
+            .NET wrapper over the Lorem Picsum API with aditional utilities for easy URL creation and file stream
+            handling
         </Description>
     </PropertyGroup>
 
