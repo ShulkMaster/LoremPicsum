@@ -29,14 +29,8 @@ jobs:
       - name: Check for version change
         id: version-check
         run: |
-          new_version=$(cat ./nupkg/*.nupkg | grep -oP '(?<=<version>)[^<]+')
-          echo "new_version=$new_version"
-          echo "new_version=$new_version" >> $GITHUB_ENV
-
-          #PACKAGE_EXISTS=$(dotnet nuget list source -s "https://api.nuget.org/v3/index.json" | grep -c $new_version)
-          #echo "Package exists: $PACKAGE_EXISTS"
-          
-          #echo "::set-output name=package-exists::$PACKAGE_EXISTS"
+          ls -la ./nupkg
+          echo ./nupkg/*.nupkg | grep -oP '(?<=<version>)[^<]+')
 
       - name: Publish NuGet package
         if: steps.version-check.outputs.package-exists == '0'
